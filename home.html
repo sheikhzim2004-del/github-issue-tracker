@@ -27,12 +27,12 @@
 
 <body>
     <!-- nav section -->
-    <header class="flex justify-between items-center p-6 shadow-sm">
+    <header class="flex-row md:flex space-y-5 justify-between items-center p-6 shadow-sm">
         <div class="flex items-center">
             <img src="./assets/github-logo.png" alt="" class="w-9">
             <p class="text-2xl font-semibold">GitHub Issues Tracker</p>
         </div>
-        <div class="flex items-center gap-2">
+        <div class="flex-row md:flex items-center gap-2 space-y-5 md:space-y-0">
             <div class="border inline-block pl-2 rounded-sm">
                 <i class="fa-brands fa-sistrix"></i>
                 <input type="text" name="" id="" placeholder="Search issues.."
@@ -43,16 +43,16 @@
     </header>
 
     <!--filter btn Section -->
-    <section class="container mx-auto mt-8 shadow-sm p-6 rounded-xl space-x-2">
-        <button id="all-filter-btn" class="btn btn-primary w-[120px]">All</button>
-        <button id="thriving-filter-btn" class="btn w-[120px]">Open</button>
-        <button id="struggling-filter-btn" class="btn w-[120px]">Closed</button>
+    <section class="container flex flex-col sm:flex-row gap-2 w-full md:w-11/12 mx-auto mt-8 shadow-sm p-6 rounded-xl space-x-2">
+        <button id="all-filter-btn" onclick="filterCategories('all-filter-btn')" class="btn btn-primary w-full sm:w-[120px]">All</button>
+        <button id="open-filter-btn" onclick="filterCategories('open-filter-btn')" class="btn  w-full sm:w-[120px]">Open</button>
+        <button id="closed-filter-btn" onclick="filterCategories('closed-filter-btn')" class="btn  w-full sm:w-[120px]">Closed</button>
     </section>
 
     <!-- Issues Summury Section -->
-     <section class="container mx-auto mt-8 flex justify-between shadow-sm p-6 rounded-xl">
+     <section class="container w-11/12 mx-auto mt-8 flex flex-col sm:flex-row gap-2 text-center sm:text-start items-center justify-between shadow-sm p-6 rounded-xl">
         <!-- left -->
-         <div class="flex items-center gap-1">
+         <div class="flex flex-col sm:flex-row items-center gap-1">
             <!-- icon -->
              <div>
                 <img src="./assets/Aperture.png" alt="">
@@ -70,8 +70,13 @@
           </div>
      </section>
 
+     <!-- spinner section -->
+      <section id="loading-spinner" class="justify-center items-center hidden">
+        <span class="loading loading-dots loading-xl"></span>
+      </section>
+
      <!-- issues section -->
-      <section id="issues-container" class="container mx-auto mt-8 grid grid-cols-4 gap-4">
+      <section id="issues-container" class="container w-11/12 mx-auto mt-8 grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4">
         <!-- <div class="card p-4 shadow-lg space-y-3 border-t-5 border-green-500">
             <div  class="flex justify-between">
                 <img src="./assets/Open-Status.png" alt="">
