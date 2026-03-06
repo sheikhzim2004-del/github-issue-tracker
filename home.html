@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GitHub Issues Tracker | Home</title>
+
+    <!-- google font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap" rel="stylesheet">
+
+    <!-- tailwind and daisiui -->
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+    <!-- font awesome cdn -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+
+    <!-- css link -->
+    <link rel="stylesheet" href="./styles/style.css">
+</head>
+
+<body>
+    <!-- nav section -->
+    <header class="flex justify-between items-center p-6 shadow-sm">
+        <div class="flex items-center">
+            <img src="./assets/github-logo.png" alt="" class="w-9">
+            <p class="text-2xl font-semibold">GitHub Issues Tracker</p>
+        </div>
+        <div class="flex items-center gap-2">
+            <div class="border inline-block pl-2 rounded-sm">
+                <i class="fa-brands fa-sistrix"></i>
+                <input type="text" name="" id="" placeholder="Search issues.."
+                    class=" rounded-sm border-none py-2 outline-none">
+            </div>
+            <button class="btn btn-primary">+ New issues</button>
+        </div>
+    </header>
+
+    <!--filter btn Section -->
+    <section class="container mx-auto mt-8 shadow-sm p-6 rounded-xl space-x-2">
+        <button id="all-filter-btn" class="btn btn-primary w-[120px]">All</button>
+        <button id="thriving-filter-btn" class="btn w-[120px]">Open</button>
+        <button id="struggling-filter-btn" class="btn w-[120px]">Closed</button>
+    </section>
+
+    <!-- Issues Summury Section -->
+     <section class="container mx-auto mt-8 flex justify-between shadow-sm p-6 rounded-xl">
+        <!-- left -->
+         <div class="flex items-center gap-1">
+            <!-- icon -->
+             <div>
+                <img src="./assets/Aperture.png" alt="">
+            </div>
+            <!-- content -->
+             <div>
+                <h3 class="text-xl font-semibold text-[#1F2937]">50 Issues</h3>
+                <p class="text-[#64748B]">Track and manage your project issues</p>
+             </div>
+         </div>
+         <!-- right -->
+          <div class="flex gap-4">
+            <div class="flex gap-2 items-center font-medium"><span class="h-2 w-2 bg-green-500 rounded-full"></span><p>Open</p></div>
+            <div class="flex gap-2 items-center font-medium"><span class="h-2 w-2 bg-purple-500 rounded-full"></span><p>Closed</p></div>
+          </div>
+     </section>
+
+</body>
+
+</html>
