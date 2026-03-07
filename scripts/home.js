@@ -125,7 +125,7 @@ const displayIssues = (issues) => {
                 </div>
                 <hr class="border-0 h-0.5 bg-gray-300">
                 <p class="text-[#64748B]">${issue.author}</p>
-                <p class="text-[#64748B]">${issue.updatedAt}</p>
+                <p class="text-[#64748B]">${new Date(issue.updatedAt).toLocaleDateString()}</p>
             </div>
         </div>
         `;
