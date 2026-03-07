@@ -1,8 +1,10 @@
+let allIssues = [];
 const issuesContainer = document.getElementById('issues-container');
 const spinner = document.getElementById('loading-spinner');
 const allFilterBtn = document.getElementById('all-filter-btn');
 const openFilterBtn = document.getElementById('open-filter-btn');
 const closedFilterBtn = document.getElementById('closed-filter-btn');
+const countIssues = document.getElementById('issues-count');
 
 // show loading spinner
 const showSpinner = ()=>{
@@ -19,8 +21,10 @@ const loadIssues = async ()=>{
     showSpinner();
     const res = await fetch("https://phi-lab-server.vercel.app/api/v1/lab/issues");
     const data = await res.json();
-     hideSpinner()
+    hideSpinner()
     displayIssues(data.data);
+    alldata = data.data; //alldata er modde shokol issues card add kora
+    console.log(alldata)
 }
 
 // {
@@ -41,10 +45,11 @@ const loadIssues = async ()=>{
 // display issues
 const displayIssues = (issues)=>{
     issuesContainer.innerHTML = '';
+    countIssues.innerText = issues.length;  //count the cardsissues
 
     issues.forEach(issue => {
         const issuesCard = document.createElement('div');
-        issuesCard.className = 'card p-4 shadow-lg space-y-3 border-t-5 border-green-500';
+        issuesCard.className = `card p-4 shadow-lg space-y-3 border-t-5 ${issue.status==='open'? 'border-green-500' : 'border-purple-500'}`;
         issuesCard.innerHTML = `
         <div  class="flex justify-between">
                 <img src="${issue.status==='open'? './assets/Open-Status.png' : './assets/Closed- Status .png'}" alt="">
@@ -80,5 +85,23 @@ const filterCategories = (id)=>{
     active.classList.add('btn-primary');
 }
 
+
+//open btn filter 
+openFilterBtn.addEventListener('click', ()=>{
+    const openCards = alldata.filter(open => open.status==='open');
+    displayIssues(openCards)
+})
+
+//closed btn filter
+closedFilterBtn.addEventListener('click', ()=>{
+    const closedCards = alldata.filter(closed => closed.status==='closed');
+    displayIssues(closedCards);
+})
+
+//all btn filter
+allFilterBtn.addEventListener('click', ()=>{
+    const allCards = alldata;
+    displayIssues(allCards)
+})
 
 loadIssues()
