@@ -61,20 +61,6 @@ const showModal = async (id) => {
     displayIssuesDetails(details.data)
 }
 
-// "data": {
-// "id": 20,
-// "title": "Login page shows error on slow connections",
-// "description": "Login page displays timeout error when internet connection is slow. Need better error handling.",
-// "status": "open",
-// "labels": [
-// "bug"
-// ],
-// "priority": "medium",
-// "author": "network_nancy",
-// "assignee": "security_sam",
-// "createdAt": "2024-01-13T15:45:00Z",
-// "updatedAt": "2024-01-13T15:45:00Z"
-// }
 
 // show modal
 const displayIssuesDetails = (issue) => {
@@ -121,21 +107,7 @@ const displayIssuesDetails = (issue) => {
     document.getElementById('issue_modal').showModal()
 }
 
-// {
-// "id": 1,
-// "title": "Fix navigation menu on mobile devices",
-// "description": "The navigation menu doesn't collapse properly on mobile devices. Need to fix the responsive behavior.",
-// "status": "open",
-// "labels": [
-// "bug",
-// "help wanted"
-// ],
-// "priority": "high",
-// "author": "john_doe",
-// "assignee": "jane_smith",
-// "createdAt": "2024-01-15T10:30:00Z",
-// "updatedAt": "2024-01-15T10:30:00Z"
-// },
+
 // display issues
 const displayIssues = (issues) => {
     issuesContainer.innerHTML = '';
@@ -143,7 +115,7 @@ const displayIssues = (issues) => {
 
     issues.forEach(issue => {
         const issuesCard = document.createElement('div');
-        issuesCard.className = `card p-4 shadow-lg space-y-3 border-t-5 ${issue.status === 'open' ? 'border-green-500' : 'border-purple-500'}`;
+        issuesCard.className = `card p-4 shadow-lg transition-all  hover:-translate-y-2 hover:shadow-xl space-y-3 border-t-4 ${issue.status === 'open' ? 'border-green-500' : 'border-purple-500'}`;
         issuesCard.innerHTML = `
         <div onclick="showModal(${issue.id})">
             <div class="flex justify-between">
