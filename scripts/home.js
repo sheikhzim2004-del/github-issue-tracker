@@ -6,9 +6,27 @@ const openFilterBtn = document.getElementById('open-filter-btn');
 const closedFilterBtn = document.getElementById('closed-filter-btn');
 const countIssues = document.getElementById('issues-count');
 const boxDetails = document.getElementById('details-container');
+const searchInput = document.getElementById('search-input');
+const searchBtn = document.getElementById('search-btn');
+
+
+// search input
+searchBtn.addEventListener('click',  ()=>{
+    const searchValue = searchInput.value.trim().toLowerCase();;
+    
+    fetch('https://phi-lab-server.vercel.app/api/v1/lab/issues')
+    .then(res=> res.json())
+    .then(data=> {
+        const allIssues = data.data;
+        // console.log(allIssues)
+        const filterIssus = allIssues.filter(issues=> issues.title.toLowerCase().includes(searchValue));
+        // console.log(filterIssus);
+        displayIssues(filterIssus);
+    })
+})
 
 // sound the the word
-function pronounceWord(title) {
+function issuesTitle(title) {
     const utterance = new SpeechSynthesisUtterance(title);
     utterance.lang = "en-EN"; // English
     window.speechSynthesis.speak(utterance);
@@ -98,7 +116,7 @@ const displayIssuesDetails = (issue) => {
     `
     const mic = document.getElementById('mic');
     mic.addEventListener('click',()=>{
-        pronounceWord(issue.title)
+        issuesTitle(issue.title)
     })
     document.getElementById('issue_modal').showModal()
 }
