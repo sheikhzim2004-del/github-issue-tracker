@@ -65,8 +65,8 @@ const showModal = async (id) => {
 // show modal
 const displayIssuesDetails = (issue) => {
 
-    const borderClass = issue.status.trim().toLowerCase() === 'open' ? 'border-green-500' : 'border-purple-500';
-    boxDetails.classList.add('border-4', borderClass);
+    // const borderClass = issue.status.trim().toLowerCase() === 'open' ? 'border-green-500' : 'border-purple-500';
+    boxDetails.classList.add('border-4', 'border-teal-700');
 
     boxDetails.innerHTML = `
     <h1 class="font-bold text-2xl">${issue.title}</h1>
@@ -115,7 +115,8 @@ const displayIssues = (issues) => {
 
     issues.forEach(issue => {
         const issuesCard = document.createElement('div');
-        issuesCard.className = `card p-4 shadow-lg transition-all  hover:-translate-y-2 hover:shadow-xl space-y-3 border-t-4 ${issue.status === 'open' ? 'border-green-500' : 'border-purple-500'}`;
+        issuesCard.className = `card p-4 shadow-lg transition-all  hover:-translate-y-1 hover:shadow-xl space-y-3 border-t-4 ${issue.status === 'open' ? 'border-green-500' : 'border-purple-500'}`;
+
         issuesCard.innerHTML = `
         <div onclick="showModal(${issue.id})">
             <div class="flex justify-between">
